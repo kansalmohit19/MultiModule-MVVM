@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.navigator"
+    namespace = "com.example.domain"
     compileSdk = 35
 
     defaultConfig {

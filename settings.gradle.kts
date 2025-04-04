@@ -25,4 +25,4 @@ include(":feature:splash")
 include(":feature:login")
 include(":feature:home")
 include(":navigator")
- 
+include(":domain")
