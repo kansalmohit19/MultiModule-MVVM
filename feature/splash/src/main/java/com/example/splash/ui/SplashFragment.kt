@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.example.feature.splash.databinding.FragmentSplashBinding
+import com.example.navigator.ModuleType
 import com.example.splash.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +26,7 @@ class SplashFragment : BaseFragment() {
         lifecycleScope.launch(Dispatchers.IO) {
             delay(3000)
             withContext(Dispatchers.Main) {
-                navigator.navigateTo(1)
+                navigator.navigateToFeatureModule(ModuleType.OnboardingModule)
             }
         }
     }

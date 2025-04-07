@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.feature.home.databinding.FragmentListBinding
 import com.example.home.BaseFragment
+import com.example.navigator.ModuleType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +19,7 @@ class ListFragment : BaseFragment() {
 
     override fun setupUI() {
         binding.listBtnDetails.setOnClickListener {
-            navigator.navigateTo(2)
+            navigator.navigateToFeatureModule(ModuleType.HomeModule)
         }
     }
 }

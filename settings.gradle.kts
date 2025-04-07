@@ -22,7 +22,9 @@ dependencyResolutionManagement {
 rootProject.name = "MultiModule-MVVM"
 include(":app")
 include(":feature:splash")
-include(":feature:login")
+include(":feature:onboarding")
 include(":feature:home")
 include(":navigator")
 include(":domain")
+include(":core")
+include(":data")

@@ -48,12 +48,17 @@ dependencies {
     kapt(libs.hilt.android.compiler)
 
     implementation(project(":feature:splash"))
-    implementation(project(":feature:login"))
+    implementation(project(":feature:onboarding"))
     implementation(project(":feature:home"))
     implementation(project(":navigator"))
 
+    implementation(project(":data"))
+
 
     testImplementation(libs.junit)
+    testImplementation("org.mockito:mockito-core:5.2.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

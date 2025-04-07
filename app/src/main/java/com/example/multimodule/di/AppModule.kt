@@ -1,12 +1,11 @@
 package com.example.multimodule.di
 
-import com.example.multimodule.navigation.NavigatorImpl
-import com.example.navigator.INavigateTo
+import com.example.multimodule.navigation.AppNavigationManager
+import com.example.navigator.NavigationManager
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 
 @Module
@@ -14,6 +13,5 @@ import javax.inject.Singleton
 abstract class AppModule {
 
     @Binds
-    @Singleton
-    abstract fun bindNavigator(navigatorImpl: NavigatorImpl): INavigateTo
+    abstract fun bindAppNavigationManager(appNavigationManager: AppNavigationManager): NavigationManager
 }
