@@ -13,17 +13,17 @@ import org.mockito.kotlin.reset
 
 class AppNavigationManagerTest {
 
-    private lateinit var navigationController: NavController
+    private lateinit var mockNavController: NavController
     private lateinit var navControllerProvider: NavControllerProvider
     private lateinit var appNavigationManager: AppNavigationManager
 
 
     @Before
     fun setUp() {
-        navigationController = mock<NavController>()
+        mockNavController = mock<NavController>()
 
         navControllerProvider = NavControllerProvider().apply {
-            setNavController(navigationController)
+            setNavController(mockNavController)
         }
 
         appNavigationManager = AppNavigationManager(navControllerProvider)
@@ -32,15 +32,13 @@ class AppNavigationManagerTest {
     @Test
     fun givenOnboardingModule_whenNavigating_thenNavigatesToOnboardingFragment() {
 
-        //act
         appNavigationManager.navigateToFeatureModule(ModuleType.OnboardingModule)
 
-        // Assert
-        verify(navigationController).navigate(R.id.action_module_to_onboarding)
+        verify(mockNavController).navigate(R.id.action_module_to_onboarding)
     }
 
     @After
     fun cleanUp() {
-        reset(navigationController)
+        reset(mockNavController)
     }
 }
