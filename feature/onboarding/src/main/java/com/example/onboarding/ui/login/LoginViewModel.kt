@@ -1,8 +1,8 @@
 package com.example.onboarding.ui.login
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import android.util.Log
 import com.example.domain.usecase.auth.LoginRequest
 import com.example.domain.usecase.auth.LoginUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,14 +15,16 @@ class LoginViewModel @Inject constructor(private val loginUserUseCase: LoginUser
 
     fun loginUser(username: String, password: String) {
         viewModelScope.launch {
-            loginUserUseCase.invoke(scope = viewModelScope,
+            loginUserUseCase.invoke(
+                scope = viewModelScope,
                 params = LoginRequest(username, password),
                 onSuccess = {
                     Log.e("Test", "Success")
                 },
                 onFailure = {
                     Log.e("Test", "Failure")
-                })
+                }
+            )
         }
     }
 }

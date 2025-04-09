@@ -17,7 +17,6 @@ class AppNavigationManagerTest {
     private lateinit var navControllerProvider: NavControllerProvider
     private lateinit var appNavigationManager: AppNavigationManager
 
-
     @Before
     fun setUp() {
         mockNavController = mock<NavController>()
@@ -31,7 +30,6 @@ class AppNavigationManagerTest {
 
     @Test
     fun givenOnboardingModule_whenNavigating_thenNavigatesToOnboardingFragment() {
-
         appNavigationManager.navigateToFeatureModule(ModuleType.OnboardingModule)
 
         verify(mockNavController).navigate(R.id.action_module_to_onboarding)

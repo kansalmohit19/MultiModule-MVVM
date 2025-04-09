@@ -8,8 +8,8 @@ import junit.framework.TestCase.assertNull
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.reset
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.reset
 
 class NavControllerProviderTest {
 
@@ -24,7 +24,6 @@ class NavControllerProviderTest {
 
     @Test
     fun `setNavController should store the navController`() {
-
         navControllerProvider.setNavController(mockNavController)
 
         val retrievedController = navControllerProvider.getNavController()
@@ -34,8 +33,7 @@ class NavControllerProviderTest {
     }
 
     @Test
-    fun `getNavController should return null if not set`(){
-
+    fun `getNavController should return null if not set`() {
         val retrievedController = navControllerProvider.getNavController()
         assertNull(retrievedController)
     }

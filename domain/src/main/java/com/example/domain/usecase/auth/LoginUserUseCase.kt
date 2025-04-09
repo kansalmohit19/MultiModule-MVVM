@@ -16,6 +16,3 @@ class LoginUserUseCase @Inject constructor(private val loginUserRepo: LoginUserR
         return loginUserRepo.loginUser()
     }
 }
-
-
-

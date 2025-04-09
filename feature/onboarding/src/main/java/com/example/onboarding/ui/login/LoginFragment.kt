@@ -22,7 +22,7 @@ class LoginFragment : BaseFragment() {
     override fun setupUI() {
         binding.btnLogin.setOnClickListener {
             viewModel.loginUser("mohit", "12345678")
-            //navigator.navigateTo(3)
+            // navigator.navigateTo(3)
         }
     }
 }

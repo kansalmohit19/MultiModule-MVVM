@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     kotlin("kapt")
     alias(libs.plugins.dagger)
+    alias(libs.plugins.ktlint)
 }
 
 android {
@@ -45,8 +46,8 @@ dependencies {
     implementation(project(":domain"))
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
 }
 kapt {
     correctErrorTypes = true

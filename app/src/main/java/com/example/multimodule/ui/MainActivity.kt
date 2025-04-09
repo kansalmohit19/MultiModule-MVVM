@@ -24,6 +24,6 @@ class MainActivity : FragmentActivity() {
             navControllerProvider.setNavController(it)
         }
 
-        //navControllerProvider.getNavController()?.navigate(com.example.mission.R.id.missionListFragment)
+        // navControllerProvider.getNavController()?.navigate(com.example.mission.R.id.missionListFragment)
     }
 }
