@@ -10,3 +10,6 @@ features) to improve code maintainability, testability, and build performance in
 - Retrofit + Moshi
 - Hilt (DI)
 - Coroutines + Flows
+- **Ktlint**
+- **JUnit**
+- **Mockito**
