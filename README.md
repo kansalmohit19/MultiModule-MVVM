@@ -5,7 +5,7 @@ features) to improve code maintainability, testability, and build performance in
 
 ## 📦 Tech Stack
 - Kotlin
-- MVVM Architecture
+- MVVM Architecture + Clean
 - Jetpack: ViewModel, LiveData, Navigation
 - Retrofit + Moshi
 - Hilt (DI)
