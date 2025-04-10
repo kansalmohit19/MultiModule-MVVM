@@ -17,5 +17,6 @@ class RegisterFragment : BaseFragment() {
     }
 
     override fun setupUI() {
+        // TODO
     }
 }

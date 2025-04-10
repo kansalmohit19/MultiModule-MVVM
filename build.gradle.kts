@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.dagger) apply false
     alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.detekt) apply false
 }
 
 subprojects {
@@ -29,6 +30,19 @@ subprojects {
                 exclude("**/generated/**")
                 include("**/kotlin/**")
             }
+        }
+    }
+
+    plugins.withId("io.gitlab.arturbosch.detekt") {
+        tasks.named("preBuild") {
+            dependsOn("detekt")
+        }
+
+        extensions.configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+            toolVersion = "1.23.6"
+            buildUponDefaultConfig = true
+            allRules = false
+            parallel = true
         }
     }
 }

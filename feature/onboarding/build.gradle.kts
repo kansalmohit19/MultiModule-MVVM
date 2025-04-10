@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     alias(libs.plugins.dagger)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -49,6 +50,7 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
+    implementation(project(":common"))
     implementation(project(":navigator"))
     implementation(project(":domain"))
 

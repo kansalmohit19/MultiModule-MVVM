@@ -9,9 +9,9 @@ sealed class Either<out S, out E> where S : Any? {
 
     val isError get() = this is Error<E>
 
-    fun either(fnR: (S) -> Any, fnL: (E) -> Any): Any = when (this) {
-        is Success -> fnR(successVal)
-        is Error -> fnL(errorVal)
+    fun evaluate(fnS: (S) -> Any, fnE: (E) -> Any): Any = when (this) {
+        is Success -> fnS(successVal)
+        is Error -> fnE(errorVal)
     }
 
     fun errorValue() = if (this is Error) errorVal else null

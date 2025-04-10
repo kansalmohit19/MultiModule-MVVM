@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.feature.login.databinding.FragmentLoginBinding
-import com.example.navigator.ModuleType
 import com.example.onboarding.ui.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,8 +21,8 @@ class LoginFragment : BaseFragment() {
 
     override fun setupUI() {
         binding.btnLogin.setOnClickListener {
-            // viewModel.loginUser("mohit", "12345678")
-            navigator.navigateToFeatureModule(ModuleType.HomeModule)
+            viewModel.loginUser("mohit", "12345678")
+            // navigator.navigateToFeatureModule(ModuleType.HomeModule)
         }
     }
 }

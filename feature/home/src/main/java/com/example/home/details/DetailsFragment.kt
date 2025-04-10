@@ -17,5 +17,6 @@ class DetailsFragment : BaseFragment() {
     }
 
     override fun setupUI() {
+        // TODO
     }
 }

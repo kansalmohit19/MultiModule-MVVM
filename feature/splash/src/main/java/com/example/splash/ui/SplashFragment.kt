@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import com.example.common.Constants.DELAY_3000
 import com.example.feature.splash.databinding.FragmentSplashBinding
 import com.example.navigator.ModuleType
 import com.example.splash.BaseFragment
@@ -24,7 +25,7 @@ class SplashFragment : BaseFragment() {
 
     override fun setupUI() {
         lifecycleScope.launch(Dispatchers.IO) {
-            delay(3000)
+            delay(DELAY_3000)
             withContext(Dispatchers.Main) {
                 navigator.navigateToFeatureModule(ModuleType.OnboardingModule)
             }

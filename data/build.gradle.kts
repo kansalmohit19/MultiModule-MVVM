@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     alias(libs.plugins.dagger)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.detekt)
 }
 
 android {

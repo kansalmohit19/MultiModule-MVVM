@@ -16,7 +16,7 @@ abstract class UseCase<in Params, out Type> where Type : Any? {
     ) {
         val job = scope.async { run(params) }
         scope.launch {
-            job.await().either(onSuccess, onFailure)
+            job.await().evaluate(onSuccess, onFailure)
         }
     }
 }
