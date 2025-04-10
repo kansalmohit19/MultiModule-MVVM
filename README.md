@@ -10,6 +10,13 @@ features) to improve code maintainability, testability, and build performance in
 - Retrofit + Moshi
 - Hilt (DI)
 - Coroutines + Flows
-- Ktlint
+- Ktlint + Detekt
 - JUnit**
 - Mockito
+
+## 🛠️ Automation
+🔧 Pre-build:
+ktlintCheck and detekt are automatically run as part of the preBuild task across all modules.
+
+🔐 Pre-push Git Hook:
+A Git hook runs ktlintCheck and detekt before every push to ensure code quality and block bad commits.

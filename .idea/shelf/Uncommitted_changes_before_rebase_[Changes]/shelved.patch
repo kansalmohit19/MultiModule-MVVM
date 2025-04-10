@@ -1,0 +1,29 @@
+Index: feature/onboarding/src/main/java/com/example/onboarding/ui/login/LoginFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.onboarding.ui.login\n\nimport android.view.LayoutInflater\nimport android.view.View\nimport android.view.ViewGroup\nimport androidx.fragment.app.viewModels\nimport com.example.feature.login.databinding.FragmentLoginBinding\nimport com.example.navigator.ModuleType\nimport com.example.onboarding.ui.BaseFragment\nimport dagger.hilt.android.AndroidEntryPoint\n\n@AndroidEntryPoint\nclass LoginFragment : BaseFragment() {\n    private val viewModel: LoginViewModel by viewModels()\n\n    private lateinit var binding: FragmentLoginBinding\n\n    override fun bindView(inflater: LayoutInflater, container: ViewGroup?): View? {\n        binding = FragmentLoginBinding.inflate(inflater, container, false)\n        return binding.root\n    }\n\n    override fun setupUI() {\n        binding.btnLogin.setOnClickListener {\n            // viewModel.loginUser(\"mohit\", \"12345678\")\n            navigator.navigateToFeatureModule(ModuleType.HomeModule)\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/feature/onboarding/src/main/java/com/example/onboarding/ui/login/LoginFragment.kt b/feature/onboarding/src/main/java/com/example/onboarding/ui/login/LoginFragment.kt
+--- a/feature/onboarding/src/main/java/com/example/onboarding/ui/login/LoginFragment.kt	(revision 1bac877695a18c30959d28f5220acf613bb02bb0)
++++ b/feature/onboarding/src/main/java/com/example/onboarding/ui/login/LoginFragment.kt	(date 1744272866587)
+@@ -5,7 +5,6 @@
+ import android.view.ViewGroup
+ import androidx.fragment.app.viewModels
+ import com.example.feature.login.databinding.FragmentLoginBinding
+-import com.example.navigator.ModuleType
+ import com.example.onboarding.ui.BaseFragment
+ import dagger.hilt.android.AndroidEntryPoint
+ 
+@@ -22,8 +21,8 @@
+ 
+     override fun setupUI() {
+         binding.btnLogin.setOnClickListener {
+-            // viewModel.loginUser("mohit", "12345678")
+-            navigator.navigateToFeatureModule(ModuleType.HomeModule)
++            viewModel.loginUser("mohit", "12345678")
++            // navigator.navigateToFeatureModule(ModuleType.HomeModule)
+         }
+     }
+ }
