@@ -34,10 +34,13 @@ subprojects {
     }
 
     plugins.withId("io.gitlab.arturbosch.detekt") {
+
+        // Make preBuild depend on detekt
         tasks.named("preBuild") {
             dependsOn("detekt")
         }
 
+        // Configure detekt options
         extensions.configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
             toolVersion = "1.23.6"
             buildUponDefaultConfig = true
