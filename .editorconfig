@@ -1,4 +1,1 @@
 root = true
-
-[*.kt]
-disabled_rules=import-ordering
