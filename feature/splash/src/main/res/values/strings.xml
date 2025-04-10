@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">home</string>
+    <string name="module_name">Module: Splash</string>
+    <string name="message">Welcome to\n\nMVVM Multimodule App</string>
 </resources>
