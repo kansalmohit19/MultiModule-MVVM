@@ -49,3 +49,16 @@ subprojects {
         }
     }
 }
+tasks.register("installGitHooks") {
+    doLast {
+        val hooksDir = file("${project.rootDir}/.git/hooks")
+        val sourceHook = file("${project.rootDir}/scripts/pre-push")
+        val targetHook = File(hooksDir, "pre-push")
+
+        if (!hooksDir.exists()) hooksDir.mkdirs()
+        sourceHook.copyTo(targetHook, overwrite = true)
+        targetHook.setExecutable(true)
+
+        println("Git hooks installed successfully.")
+    }
+}

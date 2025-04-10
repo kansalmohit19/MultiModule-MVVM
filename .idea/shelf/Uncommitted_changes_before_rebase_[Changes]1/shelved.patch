@@ -1,0 +1,38 @@
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\nplugins {\n    alias(libs.plugins.android.application) apply false\n    alias(libs.plugins.kotlin.android) apply false\n    alias(libs.plugins.android.library) apply false\n    alias(libs.plugins.dagger) apply false\n    alias(libs.plugins.ktlint) apply false\n    alias(libs.plugins.detekt) apply false\n}\n\nsubprojects {\n    plugins.withId(\"org.jlleitschuh.gradle.ktlint\") {\n\n        // Make preBuild depend on ktlintCheck\n        tasks.named(\"preBuild\") {\n            dependsOn(\"ktlintCheck\")\n        }\n\n        // Configure ktlint options\n        extensions.configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {\n            version.set(\"0.48.2\")\n            android.set(true)\n            outputColorName.set(\"RED\")\n            ignoreFailures.set(false)\n            reporters {\n                reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)\n                reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)\n            }\n            filter {\n                exclude(\"**/generated/**\")\n                include(\"**/kotlin/**\")\n            }\n        }\n    }\n\n    plugins.withId(\"io.gitlab.arturbosch.detekt\") {\n\n        // Make preBuild depend on detekt\n        tasks.named(\"preBuild\") {\n            dependsOn(\"detekt\")\n        }\n\n        // Configure detekt options\n        extensions.configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {\n            toolVersion = \"1.23.6\"\n            buildUponDefaultConfig = true\n            allRules = false\n            parallel = true\n        }\n    }\n}\ntasks.register(\"installGitHooks\") {\n    doLast {\n        val hooksDir = file(\"${project.rootDir}/.git/hooks\")\n        val sourceHook = file(\"${project.rootDir}/scripts/pre-push\")\n        val targetHook = File(hooksDir, \"pre-commit\")\n\n        if (!hooksDir.exists()) hooksDir.mkdirs()\n        sourceHook.copyTo(targetHook, overwrite = true)\n        targetHook.setExecutable(true)\n\n        println(\"Git hooks installed successfully.\")\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+--- a/build.gradle.kts	(revision 7f19ecabfa27b61ce23416f64e36b08fcf2ac8f7)
++++ b/build.gradle.kts	(date 1744283079120)
+@@ -53,7 +53,7 @@
+     doLast {
+         val hooksDir = file("${project.rootDir}/.git/hooks")
+         val sourceHook = file("${project.rootDir}/scripts/pre-push")
+-        val targetHook = File(hooksDir, "pre-commit")
++        val targetHook = File(hooksDir, "pre-push")
+ 
+         if (!hooksDir.exists()) hooksDir.mkdirs()
+         sourceHook.copyTo(targetHook, overwrite = true)
+Index: core/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    alias(libs.plugins.android.library)\n    alias(libs.plugins.kotlin.android)\n    alias(libs.plugins.ktlint)\n    alias(libs.plugins.detekt)\n}\n\nandroid {\n    namespace = \"com.example.core\"\n    compileSdk = 34\n\n    defaultConfig {\n        minSdk = 24\n\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\n        consumerProguardFiles(\"consumer-rules.pro\")\n    }\n\n    buildTypes {\n        release {\n            isMinifyEnabled = false\n            proguardFiles(\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\n                \"proguard-rules.pro\"\n            )\n        }\n    }\n    compileOptions {\n        sourceCompatibility = JavaVersion.VERSION_11\n        targetCompatibility = JavaVersion.VERSION_11\n    }\n    kotlinOptions {\n        jvmTarget = \"11\"\n    }\n}\n\ndependencies {\n\n    implementation(libs.androidx.core.ktx)\n    implementation(libs.androidx.appcompat)\n    implementation(libs.material)\n\n    testImplementation(libs.junit)\n    testImplementation(libs.mockito.core)\n    testImplementation(libs.mockito.kotlin)\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/core/build.gradle.kts b/core/build.gradle.kts
+--- a/core/build.gradle.kts	(revision 7f19ecabfa27b61ce23416f64e36b08fcf2ac8f7)
++++ b/core/build.gradle.kts	(date 1744283172947)
+@@ -7,7 +7,7 @@
+ 
+ android {
+     namespace = "com.example.core"
+-    compileSdk = 34
++    compileSdk = 35
+ 
+     defaultConfig {
+         minSdk = 24
