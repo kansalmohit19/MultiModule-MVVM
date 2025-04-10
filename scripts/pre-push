@@ -1,0 +1,27 @@
+#!/bin/sh
+
+echo "Starting pre-push checks..."
+
+# Run ktlint
+# Optional: Auto-format (currently disabled)
+# ./gradlew ktlintFormat
+# git add .  # Re-stage auto-fixed files
+
+echo "Running ktlint check..."
+./gradlew ktlintCheck
+if [ $? -ne 0 ]; then
+    echo "❌ ktlint failed! Fix issues before committing."
+    exit 1
+fi
+echo "ktlint check passed!"
+
+# Run detekt
+echo "Running detekt analysis..."
+./gradlew detekt
+if [ $? -ne 0 ]; then
+    echo "❌ Detekt failed! Fix issues before committing."
+    exit 1
+fi
+echo "Detekt analysis passed!"
+
+echo "ktlint and detekt checks passed! Ready to push!"
