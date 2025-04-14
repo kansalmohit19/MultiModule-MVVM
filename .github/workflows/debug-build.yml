@@ -18,16 +18,6 @@ jobs:
         with:
           java-version: '11'  # Use Java 11 for Android builds
 
-      - name: Cache Gradle dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/*.kt') }}
-          restore-keys: |
-            gradle-${{ runner.os }}-
-
       - name: Set up Gradle Wrapper
         run: ./gradlew wrapper  # Ensures that Gradle is properly set up
 
