@@ -3,29 +3,37 @@ name: Debug Build
 on:
   push:
     branches:
-      - master  # Trigger on pushes to the 'master' branch
+      - master
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Specify the OS to run on GitHub-hosted runners
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2  # Checkout the repository code
+        uses: actions/checkout@v4  # Latest stable version
 
       - name: Set up JDK 11
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
-          java-version: '11'  # Use Java 11 for Android builds
+          java-version: '11'
+          distribution: 'temurin'  # Recommended JDK distribution
 
-      - name: Set up Gradle Wrapper
-        run: ./gradlew wrapper  # Ensures that Gradle is properly set up
+      - name: Cache Gradle
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/*.kt') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug  # Build the debug APK
+        run: ./gradlew assembleDebug
 
-      - name: Upload APK as artifact
-        uses: actions/upload-artifact@v2
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
         with:
           name: debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk  # Path to the generated debug APK
+          path: app/build/outputs/apk/debug/app-debug.apk
