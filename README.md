@@ -11,7 +11,8 @@ features) to improve code maintainability, testability, and build performance in
 - Hilt (DI)
 - Coroutines + Flows
 - Ktlint + Detekt
-- JUnit**
+- JaCoCo
+- JUnit
 - Mockito
 
 ## 🛠️ Automation
@@ -20,3 +21,6 @@ ktlintCheck and detekt are automatically run as part of the preBuild task across
 
 🔐 Pre-push Git Hook:
 A Git hook runs ktlintCheck and detekt before every push to ensure code quality and block bad commits.
+
+📈 Test Coverage (JaCoCo):
+JaCoCo is configured to generate code coverage reports after running unit tests.
