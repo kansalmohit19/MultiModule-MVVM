@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.dagger)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.detekt)
+    jacoco
 }
 
 android {
@@ -38,7 +39,9 @@ android {
         jvmTarget = "11"
     }
 }
-
+jacoco {
+    toolVersion = "0.8.10"
+}
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -59,6 +62,30 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)
+}
+tasks.register<JacocoReport>("jacocoTestReport") {
+    dependsOn("testDebugUnitTest")
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+
+    val fileFilter = listOf("**/R.class", "**/R$*.class", "**/BuildConfig.*", "**/Manifest*.*")
+    val debugTree = fileTree(layout.buildDirectory.dir("intermediates/javac/debug/classes")) {
+        exclude(fileFilter)
+    }
+    val kotlinDebugTree = fileTree(layout.buildDirectory.dir("tmp/kotlin-classes/debug")) {
+        exclude(fileFilter)
+    }
+
+    classDirectories.setFrom(files(debugTree, kotlinDebugTree))
+    sourceDirectories.setFrom(files("src/main/java", "src/main/kotlin"))
+    executionData.setFrom(
+        fileTree(layout.buildDirectory) {
+            include("**/*.exec")
+        }
+    )
 }
 kapt {
     correctErrorTypes = true
