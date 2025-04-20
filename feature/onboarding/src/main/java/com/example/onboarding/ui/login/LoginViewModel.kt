@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.usecase.auth.LoginRequest
 import com.example.domain.usecase.auth.LoginUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val loginUserUseCase: LoginUserUseCase) :
@@ -15,16 +17,14 @@ class LoginViewModel @Inject constructor(private val loginUserUseCase: LoginUser
 
     fun loginUser(username: String, password: String) {
         viewModelScope.launch {
-            loginUserUseCase.invoke(
-                scope = viewModelScope,
+            loginUserUseCase.invoke(scope = CoroutineScope(Dispatchers.IO),
                 params = LoginRequest(username, password),
                 onSuccess = {
                     Log.e("Test", "Success")
                 },
                 onFailure = {
-                    Log.e("Test", "Failure")
-                }
-            )
+                    Log.e("Test", it.errorMessage)
+                })
         }
     }
 }

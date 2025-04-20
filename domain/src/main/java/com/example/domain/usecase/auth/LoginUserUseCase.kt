@@ -1,8 +1,8 @@
 package com.example.domain.usecase.auth
 
-import com.example.core.Either
-import com.example.core.IFailure
-import com.example.core.UseCase
+import com.example.domain.core.Either
+import com.example.domain.core.IFailure
+import com.example.domain.core.UseCase
 import com.example.domain.model.User
 import com.example.domain.repo.LoginUserRepo
 import javax.inject.Inject

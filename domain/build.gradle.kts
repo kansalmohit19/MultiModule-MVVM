@@ -43,8 +43,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-
-    api(project(":core"))
+    implementation (libs.converter.gson)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
