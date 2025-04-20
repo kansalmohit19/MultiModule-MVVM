@@ -1,4 +1,4 @@
-package com.example.core
+package com.example.domain.core
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async

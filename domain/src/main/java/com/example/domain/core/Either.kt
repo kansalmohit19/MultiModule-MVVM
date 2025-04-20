@@ -1,4 +1,4 @@
-package com.example.core
+package com.example.domain.core
 
 sealed class Either<out S, out E> where S : Any? {
 
