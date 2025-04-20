@@ -12,7 +12,9 @@ import javax.inject.Inject
 class LoginUserRepoImpl @Inject constructor(private val dataSource: DataSourceImpl) :
     LoginUserRepo {
     override suspend fun loginUser(): Either<User, IFailure> {
-        return safeApiCall(apiCall = { dataSource.loginUser() },
-            successTransform = { it?.body()?.data.toDomain() })
+        return safeApiCall(
+            apiCall = { dataSource.loginUser() },
+            successTransform = { it?.body()?.data.toDomain() }
+        )
     }
 }

@@ -25,7 +25,7 @@ class SplashFragment : BaseFragment() {
 
     override fun setupUI() {
         lifecycleScope.launch(Dispatchers.IO) {
-            delay(DELAY_3000)
+            delay(DELAY_3000.toLong())
             withContext(Dispatchers.Main) {
                 navigator.navigateToFeatureModule(ModuleType.OnboardingModule)
             }

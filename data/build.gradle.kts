@@ -44,10 +44,11 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.retrofit.core)
-    implementation (libs.converter.gson)
-    implementation (libs.okhttp.logging.interceptor)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp.logging.interceptor)
 
     implementation(project(":domain"))
+    implementation(project(":common"))
 
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
