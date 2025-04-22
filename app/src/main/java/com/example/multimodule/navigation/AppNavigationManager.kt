@@ -20,11 +20,7 @@ class AppNavigationManager @Inject constructor(
                 navControllerProvider.getNavController()?.navigate(R.id.action_module_to_home)
             }
 
-            else -> {
-                val request =
-                    NavDeepLinkRequest.Builder.fromUri("myapp://mission_details".toUri()).build()
-                navControllerProvider.getNavController()?.navigate(request)
-            }
+            else -> {}
         }
     }
 }

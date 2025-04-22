@@ -12,9 +12,9 @@ subprojects {
     plugins.withId("org.jlleitschuh.gradle.ktlint") {
 
         // Make preBuild depend on ktlintCheck
-        /*tasks.named("preBuild") {
+        tasks.named("preBuild") {
             dependsOn("ktlintCheck")
-        }*/
+        }
 
         // Configure ktlint options
         extensions.configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
@@ -36,9 +36,9 @@ subprojects {
     plugins.withId("io.gitlab.arturbosch.detekt") {
 
         // Make preBuild depend on detekt
-        /*tasks.named("preBuild") {
+        tasks.named("preBuild") {
             dependsOn("detekt")
-        }*/
+        }
 
         // Configure detekt options
         extensions.configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
