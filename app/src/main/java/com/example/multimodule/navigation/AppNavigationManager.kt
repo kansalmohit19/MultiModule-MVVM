@@ -1,7 +1,5 @@
 package com.example.multimodule.navigation
 
-import androidx.core.net.toUri
-import androidx.navigation.NavDeepLinkRequest
 import com.example.multimodule.R
 import com.example.navigator.ModuleType
 import com.example.navigator.NavigationManager

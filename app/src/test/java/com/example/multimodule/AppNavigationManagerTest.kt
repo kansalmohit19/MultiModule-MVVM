@@ -65,7 +65,7 @@ class AppNavigationManagerTest {
     }
 
     @Test
-    fun whenNothing(){
+    fun whenNothing() {
         appNavigationManager.navigateToFeatureModule(ModuleType.None)
         verify(mockNavController, never()).navigate(R.id.action_module_to_onboarding)
         verify(mockNavController, never()).navigate(R.id.action_module_to_home)
